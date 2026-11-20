@@ -64,7 +64,16 @@
       <div class="batch-actions"><span class="date-label">As notas existentes não são alteradas.</span><button class="primary" id="applyBatch">Aplicar marcações</button></div>
       <div class="batch-hint">Se já existir outra pessoa num dos períodos escolhidos, será pedida confirmação antes de substituir. Se cancelares, nenhuma alteração deste bloco será aplicada.</div>
     </section>
-    <section id="setup" class="panel setup" hidden><h3>Configuração necessária</h3><p>A interface está pronta, mas a sincronização ainda não está ligada. Segue as instruções do ficheiro <code>LEIA-ME.txt</code> para criar a base de dados gratuita e configurar o endereço privado.</p></section>
+    <section id="setup" class="panel setup" hidden>
+  <h3>Configurar agenda partilhada</h3>
+  <p>Cola aqui a ligação privada da agenda que recebeste. A configuração fica guardada neste dispositivo.</p>
+  <div style="display:grid;gap:9px;margin-top:12px">
+    <input id="roomLink" type="text" placeholder="Colar ligação privada da agenda"
+      autocomplete="off"
+      style="width:100%;min-height:42px;border:1px solid #e6e8ec;border-radius:9px;padding:9px;font:inherit;font-size:13px">
+    <button class="primary" id="saveRoom" type="button">Configurar agenda</button>
+  </div>
+</section>
   </main>
   <div class="footer">As alterações são partilhadas entre os dois telemóveis quando a ligação está configurada.</div>
 </div>

@@ -1,0 +1,11 @@
+{
+  "name": "Agenda partilhada — Sérgio e Flávia",
+  "short_name": "Agenda",
+  "lang": "pt-PT",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f6f8",
+  "theme_color": "#f7f8fa",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}

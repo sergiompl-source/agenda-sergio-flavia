@@ -96,6 +96,31 @@ if (!ROOM_KEY) {
 const READY = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY && ROOM_KEY && window.supabase);
 const client = READY ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 const $ = s => document.querySelector(s);
+  $('#saveRoom').addEventListener('click',()=>{
+  const raw=$('#roomLink').value.trim();
+  if(!raw){showToast('Cola primeiro a ligação privada da agenda.');return}
+  let key=raw;
+  try{
+    if(raw.includes('://')){
+      key=new URL(raw).searchParams.get('room')||'';
+    }else if(raw.includes('room=')){
+      key=new URLSearchParams(raw.split('?')[1]||raw).get('room')||'';
+    }
+  }catch(e){
+    showToast('A ligação não é válida.');
+    return;
+  }
+  if(key.length<32){
+    showToast('Não foi encontrada uma chave válida na ligação.');
+    return;
+  }
+  try{
+    localStorage.setItem('agenda_sergio_flavia_room',key);
+    location.reload();
+  }catch(e){
+    showToast('Não foi possível guardar a configuração.');
+  }
+});
 const state = { month:new Date(new Date().getFullYear(),new Date().getMonth(),1), selected:dateKey(new Date()), records:{}, dirtyNote:null, noteTimer:null, pollTimer:null };
 function dateKey(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
 function parseKey(k){const [y,m,d]=k.split('-').map(Number);return new Date(y,m-1,d)}
